@@ -1,0 +1,1092 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/10/2024 2:16:25 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="LAPTOP-3D7E43AE"
+  DTS:CreatorName="LAPTOP-3D7E43AE\josem"
+  DTS:DTSID="{A8F27D7E-9403-4C21-BE99-878974E29A59}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5397.1"
+  DTS:LocaleID="9226"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{E354031E-6770-441E-AE97-13A64E4B6C35}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Imagenes]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{6B13BA35-0D30-4F33-98E4-D0AD00D5BEFD}"
+      DTS:ObjectName="Imagenes">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="2"
+          DTS:ConnectionString="C:\Users\josem\OneDrive\Escritorio\COSAS JOSE MANUEL\2024\Udemy SSIS 2024\Data Flow o Flujo de Datos\Importar Columnas y Exportar Columnas\Imagenes" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Imagenes 1]"
+      DTS:CreationName="FILE"
+      DTS:DTSID="{55FDD518-C4A5-4436-AABF-221A60EEE2E5}"
+      DTS:ObjectName="Imagenes 1">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:FileUsageType="3"
+          DTS:ConnectionString="C:\Users\josem\OneDrive\Escritorio\COSAS JOSE MANUEL\2024\Udemy SSIS 2024\Data Flow o Flujo de Datos\Importar Columnas y Exportar Columnas\Imagenes" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.STREAMING]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{43C26D50-40D5-4E9B-BF7A-79426862BD40}"
+      DTS:ObjectName="LocalHost.STREAMING">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=STREAMING;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package1-{43C26D50-40D5-4E9B-BF7A-79426862BD40}LocalHost.STREAMING;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[RutaConexionPäisaje]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{B99B5E7D-8095-4DFF-94AA-615F1596720E}"
+      DTS:ObjectName="RutaConexionPäisaje">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="9226"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\Users\josem\OneDrive\Escritorio\COSAS JOSE MANUEL\2024\Udemy SSIS 2024\Data Flow o Flujo de Datos\Importar Columnas y Exportar Columnas\Fotografia.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="255"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="RutaFotografia"
+              DTS:DTSID="{17F45F4F-0F20-451D-92A5-D396472BFD08}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Crear Directorio"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="Tarea Sistema de archivos"
+      DTS:DTSID="{6058AE47-D7DC-4AD5-B83E-2DA2C5E758F9}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Crear Directorio"
+      DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="CreateDirectory"
+          TaskOverwriteDestFile="True"
+          TaskSourcePath="{55FDD518-C4A5-4436-AABF-221A60EEE2E5}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Eliminar Directorio"
+      DTS:CreationName="Microsoft.FileSystemTask"
+      DTS:Description="Tarea Sistema de archivos"
+      DTS:DTSID="{E26605F8-E8D1-4426-A24C-8CC4D48A5E34}"
+      DTS:ExecutableType="Microsoft.FileSystemTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Eliminar Directorio"
+      DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <FileSystemData
+          TaskOperationType="DeleteDirectory"
+          TaskSourcePath="{6B13BA35-0D30-4F33-98E4-D0AD00D5BEFD}" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Exportar Columnas"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{F0B2F3FC-9FCA-487C-8312-A1EDBE83B170}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Exportar Columnas"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Exportar Columnas\Export Column"
+              componentClassID="Microsoft.Extractor"
+              contactInfo="Export Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Reads data from a data flow and insert it into a file. For example, create image files based on a database column that contains photographs."
+              name="Export Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Exportar Columnas\Export Column.Inputs[Export Column Input]"
+                  hasSideEffects="true"
+                  name="Export Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Exportar Columnas\Export Column.Inputs[Export Column Input].Columns[RutaFotografia]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="RutaFotografia"
+                      errorOrTruncationOperation="File Open"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Output].Columns[RutaFotografia]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column that contains the file data."
+                          name="FileDataColumnID">#{Package\Exportar Columnas\Export Column.Inputs[Export Column Input].Columns[ImagenFotografia]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether to write a byte-order marker (BOM) to the file."
+                          name="WriteBOM">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether to force truncation of an existing file."
+                          name="ForceTruncate">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether to append data to an existing file."
+                          name="AllowAppend">false</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Exportar Columnas\Export Column.Inputs[Export Column Input].Columns[ImagenFotografia]"
+                      cachedDataType="image"
+                      cachedName="ImagenFotografia"
+                      errorOrTruncationOperation="File Write"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Output].Columns[ImagenFotografia]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the input column that contains the file data."
+                          name="FileDataColumnID">#{Package\Exportar Columnas\0:invalid}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether to write a byte-order marker (BOM) to the file."
+                          name="WriteBOM">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether to force truncation of an existing file."
+                          name="ForceTruncate">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether to append data to an existing file."
+                          name="AllowAppend">true</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Exportar Columnas\Export Column.Outputs[Export Column Output]"
+                  exclusionGroup="1"
+                  name="Export Column Output"
+                  synchronousInputId="Package\Exportar Columnas\Export Column.Inputs[Export Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Exportar Columnas\Export Column.Outputs[Export Column Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Export Column Error Output"
+                  synchronousInputId="Package\Exportar Columnas\Export Column.Inputs[Export Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Exportar Columnas\Export Column.Outputs[Export Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Exportar Columnas\Export Column.Outputs[Export Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Exportar Columnas\Export Column.Outputs[Export Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Exportar Columnas\Export Column.Outputs[Export Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Exportar Columnas\Origen Fotografia"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="Origen Fotografia"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Fotografia]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Exportar Columnas\Origen Fotografia.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.STREAMING]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.STREAMING]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Output].Columns[RutaFotografia]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Output].ExternalColumns[RutaFotografia]"
+                      length="255"
+                      lineageId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Output].Columns[RutaFotografia]"
+                      name="RutaFotografia"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Output].Columns[ImagenFotografia]"
+                      dataType="image"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Output].ExternalColumns[ImagenFotografia]"
+                      lineageId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Output].Columns[ImagenFotografia]"
+                      name="ImagenFotografia"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Output].ExternalColumns[FotografiaID]"
+                      dataType="i4"
+                      name="FotografiaID" />
+                    <externalMetadataColumn
+                      refId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Output].ExternalColumns[RutaFotografia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="RutaFotografia" />
+                    <externalMetadataColumn
+                      refId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Output].ExternalColumns[ImagenFotografia]"
+                      dataType="image"
+                      name="ImagenFotografia" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Error Output].Columns[RutaFotografia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Error Output].Columns[RutaFotografia]"
+                      name="RutaFotografia" />
+                    <outputColumn
+                      refId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Error Output].Columns[ImagenFotografia]"
+                      dataType="image"
+                      lineageId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Error Output].Columns[ImagenFotografia]"
+                      name="ImagenFotografia" />
+                    <outputColumn
+                      refId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Exportar Columnas.Paths[OLE DB Source Output]"
+              endId="Package\Exportar Columnas\Export Column.Inputs[Export Column Input]"
+              name="OLE DB Source Output"
+              startId="Package\Exportar Columnas\Origen Fotografia.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Importar Columnas"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1E07BBFA-45B6-47E6-B1C5-8F2C4DD6F17F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Importar Columnas"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Importar Columnas\Carga Fotografia"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Carga Fotografia"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[Fotografia]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Importar Columnas\Carga Fotografia.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.STREAMING]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.STREAMING]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Importar Columnas\Carga Fotografia.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Importar Columnas\Carga Fotografia.Inputs[OLE DB Destination Input].Columns[RutaFotografia]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="RutaFotografia"
+                      externalMetadataColumnId="Package\Importar Columnas\Carga Fotografia.Inputs[OLE DB Destination Input].ExternalColumns[RutaFotografia]"
+                      lineageId="Package\Importar Columnas\Ruta Origen Paisaje.Outputs[Flat File Source Output].Columns[RutaFotografia]" />
+                    <inputColumn
+                      refId="Package\Importar Columnas\Carga Fotografia.Inputs[OLE DB Destination Input].Columns[ImagenFotografia]"
+                      cachedDataType="image"
+                      cachedName="ImagenFotografia"
+                      externalMetadataColumnId="Package\Importar Columnas\Carga Fotografia.Inputs[OLE DB Destination Input].ExternalColumns[ImagenFotografia]"
+                      lineageId="Package\Importar Columnas\Import Column.Outputs[Import Column Output].Columns[ImagenFotografia]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Importar Columnas\Carga Fotografia.Inputs[OLE DB Destination Input].ExternalColumns[FotografiaID]"
+                      dataType="i4"
+                      name="FotografiaID" />
+                    <externalMetadataColumn
+                      refId="Package\Importar Columnas\Carga Fotografia.Inputs[OLE DB Destination Input].ExternalColumns[RutaFotografia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="RutaFotografia" />
+                    <externalMetadataColumn
+                      refId="Package\Importar Columnas\Carga Fotografia.Inputs[OLE DB Destination Input].ExternalColumns[ImagenFotografia]"
+                      dataType="image"
+                      name="ImagenFotografia" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Importar Columnas\Carga Fotografia.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Importar Columnas\Carga Fotografia.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Importar Columnas\Carga Fotografia.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Importar Columnas\Carga Fotografia.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Importar Columnas\Carga Fotografia.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Importar Columnas\Carga Fotografia.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Importar Columnas\Import Column"
+              componentClassID="Microsoft.Inserter"
+              contactInfo="Import Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Reads data from files and adds it to columns in a data flow. For example, use an input column of file paths to import photographs from a directory."
+              name="Import Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Importar Columnas\Import Column.Inputs[Import Column Input]"
+                  name="Import Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Importar Columnas\Import Column.Inputs[Import Column Input].Columns[RutaFotografia]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="RutaFotografia"
+                      errorOrTruncationOperation="File Open"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Importar Columnas\Ruta Origen Paisaje.Outputs[Flat File Source Output].Columns[RutaFotografia]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the ID of the output column to receive the file data."
+                          name="FileDataColumnID">#{Package\Importar Columnas\Import Column.Outputs[Import Column Output].Columns[ImagenFotografia]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="TRUE if the file is expected to begin with a BOM"
+                          name="ExpectBOM">false</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Importar Columnas\Import Column.Outputs[Import Column Output]"
+                  exclusionGroup="1"
+                  name="Import Column Output"
+                  synchronousInputId="Package\Importar Columnas\Import Column.Inputs[Import Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Importar Columnas\Import Column.Outputs[Import Column Output].Columns[ImagenFotografia]"
+                      dataType="image"
+                      errorOrTruncationOperation="File Read"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Importar Columnas\Import Column.Outputs[Import Column Output].Columns[ImagenFotografia]"
+                      name="ImagenFotografia" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Importar Columnas\Import Column.Outputs[Import Column Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Import Column Error Output"
+                  synchronousInputId="Package\Importar Columnas\Import Column.Inputs[Import Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Importar Columnas\Import Column.Outputs[Import Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Importar Columnas\Import Column.Outputs[Import Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Importar Columnas\Import Column.Outputs[Import Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Importar Columnas\Import Column.Outputs[Import Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Importar Columnas\Ruta Origen Paisaje"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="9226"
+              name="Ruta Origen Paisaje"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Importar Columnas\Ruta Origen Paisaje.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[RutaConexionPäisaje]"
+                  connectionManagerRefId="Package.ConnectionManagers[RutaConexionPäisaje]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Importar Columnas\Ruta Origen Paisaje.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Importar Columnas\Ruta Origen Paisaje.Outputs[Flat File Source Output].Columns[RutaFotografia]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Importar Columnas\Ruta Origen Paisaje.Outputs[Flat File Source Output].ExternalColumns[RutaFotografia]"
+                      length="255"
+                      lineageId="Package\Importar Columnas\Ruta Origen Paisaje.Outputs[Flat File Source Output].Columns[RutaFotografia]"
+                      name="RutaFotografia"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Importar Columnas\Ruta Origen Paisaje.Outputs[Flat File Source Output].ExternalColumns[RutaFotografia]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="RutaFotografia" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Importar Columnas\Ruta Origen Paisaje.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Importar Columnas\Ruta Origen Paisaje.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Importar Columnas\Ruta Origen Paisaje.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Importar Columnas\Ruta Origen Paisaje.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Importar Columnas\Ruta Origen Paisaje.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Importar Columnas\Ruta Origen Paisaje.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Importar Columnas\Ruta Origen Paisaje.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Importar Columnas.Paths[Flat File Source Output]"
+              endId="Package\Importar Columnas\Import Column.Inputs[Import Column Input]"
+              name="Flat File Source Output"
+              startId="Package\Importar Columnas\Ruta Origen Paisaje.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Importar Columnas.Paths[Import Column Output]"
+              endId="Package\Importar Columnas\Carga Fotografia.Inputs[OLE DB Destination Input]"
+              name="Import Column Output"
+              startId="Package\Importar Columnas\Import Column.Outputs[Import Column Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Limpiar Fotografia"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{795468B6-4630-45A4-9284-50D36FC68469}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpiar Fotografia"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{43C26D50-40D5-4E9B-BF7A-79426862BD40}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE Fotografia" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción]"
+      DTS:CreationName=""
+      DTS:DTSID="{6371C97D-4227-4244-BEF9-DD3F5846D59B}"
+      DTS:From="Package\Importar Columnas"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción"
+      DTS:To="Package\Eliminar Directorio" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{41E869C7-B505-4826-9145-D8ADD231E696}"
+      DTS:From="Package\Eliminar Directorio"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 1"
+      DTS:To="Package\Crear Directorio" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{B664056E-139A-4DB2-9B1D-BAA604AC60E4}"
+      DTS:From="Package\Crear Directorio"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 2"
+      DTS:To="Package\Exportar Columnas" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Restricción 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{1A726029-0162-497C-A846-8343313CB97B}"
+      DTS:From="Package\Limpiar Fotografia"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Restricción 3"
+      DTS:To="Package\Importar Columnas" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--Esta sección CDATA contiene la información de diseño del paquete. Esta sección incluye información como, por ejemplo, las coordenadas (x,y), el ancho y el alto.-->
+<!--Si edita manualmente esta sección y comete un error, puede eliminarlo. -->
+<!--El paquete podrá cargarse normalmente, pero se perderá la información de diseño anterior y el diseñador reorganizará los elementos automáticamente en la superficie de diseño.-->
+<Objects
+  Version="8">
+  <!--Cada uno de los nodos siguientes contiene propiedades que no afectan al comportamiento en tiempo de ejecución.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="166.4,41.6"
+          Id="Package\Importar Columnas"
+          TopLeft="236.666653735771,84.0666660820776" />
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Eliminar Directorio"
+          TopLeft="249.166653052801,168.133332164155" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción]"
+          TopLeft="319.866653735771,125.666666082078">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="10.8999993170299,42.4666660820776"
+              Start="0,0"
+              End="10.8999993170299,34.9666660820776">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.2333330410388" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.2333330410388"
+                    Point2="0,21.2333330410388"
+                    Point3="4,21.2333330410388" />
+                  <mssgle:LineSegment
+                    End="6.89999931702994,21.2333330410388" />
+                  <mssgle:CubicBezierSegment
+                    Point1="6.89999931702994,21.2333330410388"
+                    Point2="10.8999993170299,21.2333330410388"
+                    Point3="10.8999993170299,25.2333330410388" />
+                  <mssgle:LineSegment
+                    End="10.8999993170299,34.9666660820776" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="152,41.6"
+          Id="Package\Crear Directorio"
+          TopLeft="286.666651003891,247.866664943033" />
+        <NodeLayout
+          Size="167.2,43.2"
+          Id="Package\Exportar Columnas"
+          TopLeft="275.833318262465,330.19999770383" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 1]"
+          TopLeft="330.766653052801,209.733332164155">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="31.8999979510906,38.1333327788777"
+              Start="0,0"
+              End="31.8999979510906,30.6333327788777">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.0666663894389" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.0666663894389"
+                    Point2="0,19.0666663894389"
+                    Point3="4,19.0666663894389" />
+                  <mssgle:LineSegment
+                    End="27.8999979510906,19.0666663894389" />
+                  <mssgle:CubicBezierSegment
+                    Point1="27.8999979510906,19.0666663894389"
+                    Point2="31.8999979510906,19.0666663894389"
+                    Point3="31.8999979510906,23.0666663894389" />
+                  <mssgle:LineSegment
+                    End="31.8999979510906,30.6333327788777" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 2]"
+          TopLeft="361.049984633178,289.466664943033">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,40.7333327607974"
+              Start="0,0"
+              End="0,33.2333327607974">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.2333327607974" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Limpiar Fotografia"
+          TopLeft="249.166653052801,4.33333330319987" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Restricción 3]"
+          TopLeft="330.366653052801,45.9333333031999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-10.4999993170302,38.1333327788777"
+              Start="0,0"
+              End="-10.4999993170302,30.6333327788777">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.0666663894389" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.0666663894389"
+                    Point2="0,19.0666663894389"
+                    Point3="-4,19.0666663894389" />
+                  <mssgle:LineSegment
+                    End="-6.49999931703019,19.0666663894389" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-6.49999931703019,19.0666663894389"
+                    Point2="-10.4999993170302,19.0666663894389"
+                    Point3="-10.4999993170302,23.0666663894389" />
+                  <mssgle:LineSegment
+                    End="-10.4999993170302,30.6333327788777" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Importar Columnas">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Importar Columnas\Ruta Origen Paisaje"
+          TopLeft="312.499982925754,92.7333326884773" />
+        <NodeLayout
+          Size="146.4,41.6"
+          Id="Package\Importar Columnas\Import Column"
+          TopLeft="336.666648272012,188.066665358875" />
+        <EdgeLayout
+          Id="Package\Importar Columnas.Paths[Flat File Source Output]"
+          TopLeft="398.099982925754,134.333332688477">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="11.7666653462583,53.7333326703973"
+              Start="0,0"
+              End="11.7666653462583,46.2333326703973">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.8666663351986" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.8666663351986"
+                    Point2="0,26.8666663351986"
+                    Point3="4,26.8666663351986" />
+                  <mssgle:LineSegment
+                    End="7.76666534625832,26.8666663351986" />
+                  <mssgle:CubicBezierSegment
+                    Point1="7.76666534625832,26.8666663351986"
+                    Point2="11.7666653462583,26.8666663351986"
+                    Point3="11.7666653462583,30.8666663351986" />
+                  <mssgle:LineSegment
+                    End="11.7666653462583,46.2333326703973" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="156,41.6"
+          Id="Package\Importar Columnas\Carga Fotografia"
+          TopLeft="319.999982515971,285.999998011192" />
+        <EdgeLayout
+          Id="Package\Importar Columnas.Paths[Import Column Output]"
+          TopLeft="409.866648272012,229.666665358875">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-11.8666657560405,56.3333326523172"
+              Start="0,0"
+              End="-11.8666657560405,48.8333326523172">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.1666663261586" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.1666663261586"
+                    Point2="0,28.1666663261586"
+                    Point3="-4,28.1666663261586" />
+                  <mssgle:LineSegment
+                    End="-7.8666657560405,28.1666663261586" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-7.8666657560405,28.1666663261586"
+                    Point2="-11.8666657560405,28.1666663261586"
+                    Point3="-11.8666657560405,32.1666663261586" />
+                  <mssgle:LineSegment
+                    End="-11.8666657560405,48.8333326523172" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Importar Columnas\Carga Fotografia">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Exportar Columnas">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="159.2,41.6"
+          Id="Package\Exportar Columnas\Origen Fotografia"
+          TopLeft="410.999993875623,85.9999987185002" />
+        <NodeLayout
+          Size="147.2,41.6"
+          Id="Package\Exportar Columnas\Export Column"
+          TopLeft="458.999993160367,217.999996751547" />
+        <EdgeLayout
+          Id="Package\Exportar Columnas.Paths[OLE DB Source Output]"
+          TopLeft="490.599993875623,127.5999987185">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="41.9999992847441,90.3999980330468"
+              Start="0,0"
+              End="41.9999992847441,82.8999980330468">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,41.1999990165234" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,41.1999990165234"
+                    Point2="0,45.1999990165234"
+                    Point3="4,45.1999990165234" />
+                  <mssgle:LineSegment
+                    End="37.9999992847441,45.1999990165234" />
+                  <mssgle:CubicBezierSegment
+                    Point1="37.9999992847441,45.1999990165234"
+                    Point2="41.9999992847441,45.1999990165234"
+                    Point3="41.9999992847441,49.1999990165234" />
+                  <mssgle:LineSegment
+                    End="41.9999992847441,82.8999980330468" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Exportar Columnas\Origen Fotografia">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
